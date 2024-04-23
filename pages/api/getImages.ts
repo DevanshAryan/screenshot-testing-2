@@ -8,7 +8,7 @@ const currentDirectory = process.cwd();
 console.log('Current working directory:', currentDirectory);
 
 // Read the contents of the current directory
-fs.readdir(currentDirectory, (err, files) => {
+fs.readdir(currentDirectory, (err:any, files:any) => {
     if (err) {
         console.error('Error reading directory:', err);
         return;
@@ -16,7 +16,7 @@ fs.readdir(currentDirectory, (err, files) => {
 
     // Log the files in the directory
     console.log('Files in the directory:');
-    files.forEach(file => {
+    files.forEach((file:any) => {
         console.log(file);
     });
 });

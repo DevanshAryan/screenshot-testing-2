@@ -28,10 +28,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   process.nextTick(async () => {
     try {
       process.env.TARGET_URL = baseUrl;
-      execSync('npx lost-pixel update');
+      execSync('lost-pixel update');
 
       process.env.TARGET_URL = compareUrl;
-      execSync('npx lost-pixel');
+      execSync('lost-pixel');
 
       tasks.setTaskStatus(newTaskId, 'completed');
     } catch (error) {
@@ -41,3 +41,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   res.status(200).json({ taskId: newTaskId });
 }
+

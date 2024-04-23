@@ -4,10 +4,11 @@ import { exec as execCallback } from 'child_process';
 const fs = require('fs');
 const path = require('path');
 
-const currentDirectory = path.join(process.cwd(),'.next','static');
+const currentDirectory = process.cwd();
 console.log('Current working directory:', currentDirectory);
 
 // Read the contents of the current directory
+console.log('11');
 fs.readdir(currentDirectory, (err:any, files:any) => {
     if (err) {
         console.error('Error reading directory:', err);
@@ -29,6 +30,8 @@ const exec = (command: string) =>
       return resolve(stdout);
     });
   });
+
+// console.log(33);
 
 function getAllScenarioFiles(directoryPath: string): string[] {
   const scenarioFiles: string[] = [];
@@ -55,19 +58,22 @@ function getAllScenarioFiles(directoryPath: string): string[] {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const baselineDir = path.join(process.cwd(), '.next', 'static','.lostpixel','baseline');
+  const baselineDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','baseline');
+  console.log('62');
   const baselineImageFiles = fs.readdirSync(baselineDir);
   const baselineFiles = baselineImageFiles.map((file: string) => {
     return file;
   });
 
-  const currentDir = path.join(process.cwd(), '.next', 'static','.lostpixel','current');
+  const currentDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','current');
+  console.log(69);
   const currentImageFiles = fs.readdirSync(currentDir);
   const currentFiles = currentImageFiles.map((file: string) => {
     return file;
   });
 
-  const diffDir = path.join(process.cwd(),'.next', 'static','.lostpixel','difference');
+  const diffDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','difference');
+  console.log(76);
   const diffImageFiles = fs.readdirSync(diffDir);
   const diffFiles = diffImageFiles.map((file: string) => {
     return file;

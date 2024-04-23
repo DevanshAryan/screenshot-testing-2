@@ -4,6 +4,23 @@ import { exec as execCallback } from 'child_process';
 const fs = require('fs');
 const path = require('path');
 
+const currentDirectory = process.cwd();
+console.log('Current working directory:', currentDirectory);
+
+// Read the contents of the current directory
+fs.readdir(currentDirectory, (err, files) => {
+    if (err) {
+        console.error('Error reading directory:', err);
+        return;
+    }
+
+    // Log the files in the directory
+    console.log('Files in the directory:');
+    files.forEach(file => {
+        console.log(file);
+    });
+});
+
 const exec = (command: string) =>
   new Promise(resolve => {
     execCallback(command, (err, stdout) => {

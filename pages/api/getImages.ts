@@ -4,7 +4,7 @@ import { exec as execCallback } from 'child_process';
 const fs = require('fs');
 const path = require('path');
 
-const currentDirectory = '/var/task';
+const currentDirectory = '/tmp';
 console.log('Current working directory:', currentDirectory);
 
 // Read the contents of the current directory
@@ -58,30 +58,30 @@ function getAllScenarioFiles(directoryPath: string): string[] {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const lostpixeldir = path.join('/var/task', 'public', 'resources', '.lostpixel');
+  const lostpixeldir = path.join('/tmp', 'public', 'resources', '.lostpixel');
   if (!fs.existsSync(lostpixeldir)) {
-    fs.mkdirSync(path.join('/var/task', 'public'));
-    fs.mkdirSync(path.join('/var/task', 'public', 'resources'));
-    fs.mkdirSync(path.join('/var/task', 'public', 'resources', '.lostpixel'));
+    fs.mkdirSync(path.join('/tmp', 'public'));
+    fs.mkdirSync(path.join('/tmp', 'public', 'resources'));
+    fs.mkdirSync(path.join('/tmp', 'public', 'resources', '.lostpixel'));
   }
-  const baselineDir = path.join('/var/task', 'public', 'resources', '.lostpixel', 'baseline');
+  const baselineDir = path.join('/tmp', 'public', 'resources', '.lostpixel', 'baseline');
   console.log('62');
   console.log(baselineDir);
-  console.log('/var/task');
+  console.log('/tmp');
   console.log(__dirname);
   const baselineImageFiles = fs.readdirSync(baselineDir);
   const baselineFiles = baselineImageFiles.map((file: string) => {
     return file;
   });
 
-  const currentDir = path.join('/var/task', 'public', 'resources', '.lostpixel', 'current');
+  const currentDir = path.join('/tmp', 'public', 'resources', '.lostpixel', 'current');
   console.log(69);
   const currentImageFiles = fs.readdirSync(currentDir);
   const currentFiles = currentImageFiles.map((file: string) => {
     return file;
   });
 
-  const diffDir = path.join('/var/task', 'public', 'resources', '.lostpixel', 'difference');
+  const diffDir = path.join('/tmp', 'public', 'resources', '.lostpixel', 'difference');
   console.log(76);
   const diffImageFiles = fs.readdirSync(diffDir);
   const diffFiles = diffImageFiles.map((file: string) => {

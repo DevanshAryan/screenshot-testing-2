@@ -1,4 +1,4 @@
-// console.log('/var/task');
+// console.log('/tmp');
 
 export const config = {
   pageShots: {
@@ -10,9 +10,9 @@ export const config = {
     ],
     baseUrl: process.env.TARGET_URL || 'https://www.sprinklr.com',
   },
-  imagePathBaseline: '/var/task' + '/public/resources/.lostpixel/baseline',
-  imagePathCurrent: '/var/task' + '/public/resources/.lostpixel/current',
-  imagePathDifference: '/var/task' + '/public/resources/.lostpixel/difference',
+  imagePathBaseline: '/tmp' + '/public/resources/.lostpixel/baseline',
+  imagePathCurrent: '/tmp' + '/public/resources/.lostpixel/current',
+  imagePathDifference: '/tmp' + '/public/resources/.lostpixel/difference',
   generateOnly: true,
   failOnDifference: false,
   compareEngine: 'odiff',

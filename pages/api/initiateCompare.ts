@@ -1,18 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { exec as execCallback } from 'child_process';
+import { spawnSync } from 'child_process';
 import { v4 as uuidv4 } from 'uuid';
 
 import tasks from '@/src/tasks';
 
-const exec = (command: string) =>
-  new Promise((resolve,reject) => {
-    execCallback(command, (err, stdout) => {
-      if(err)
-      return reject(err);
-      console.log(stdout);
-      return resolve(stdout);
-    });
-  });
+// const exec = (command: string) =>
+//   new Promise((resolve,reject) => {
+//     execCallback(command, (err, stdout) => {
+//       if(err)
+//       return reject(err);
+//       console.log(stdout);
+//       return resolve(stdout);
+//     });
+//   });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { baseUrl, compareUrl } = req.body;
@@ -28,10 +28,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   process.nextTick(async () => {
     try {
       process.env.TARGET_URL = baseUrl;
-      await exec('npx lost-pixel update');
+      spawnSync('npx lost-pixel update');
 
       process.env.TARGET_URL = compareUrl;
-      await exec('npx lost-pixel');
+      spawnSync('npx lost-pixel');
 
       tasks.setTaskStatus(newTaskId, 'completed');
     } catch (error) {

@@ -4,7 +4,7 @@ import { exec as execCallback } from 'child_process';
 const fs = require('fs');
 const path = require('path');
 
-const currentDirectory = process.cwd();
+const currentDirectory = path.join(process.cwd(),'.next','static');
 console.log('Current working directory:', currentDirectory);
 
 // Read the contents of the current directory

@@ -55,19 +55,19 @@ function getAllScenarioFiles(directoryPath: string): string[] {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const baselineDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','baseline');
+  const baselineDir = path.join(process.cwd(), '.next', 'static','.lostpixel','baseline');
   const baselineImageFiles = fs.readdirSync(baselineDir);
   const baselineFiles = baselineImageFiles.map((file: string) => {
     return file;
   });
 
-  const currentDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','current');
+  const currentDir = path.join(process.cwd(), '.next', 'static','.lostpixel','current');
   const currentImageFiles = fs.readdirSync(currentDir);
   const currentFiles = currentImageFiles.map((file: string) => {
     return file;
   });
 
-  const diffDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','difference');
+  const diffDir = path.join(process.cwd(),'.next', 'static','.lostpixel','difference');
   const diffImageFiles = fs.readdirSync(diffDir);
   const diffFiles = diffImageFiles.map((file: string) => {
     return file;

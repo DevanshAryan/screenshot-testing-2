@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       tasks.setTaskStatus(newTaskId, 'completed');
     } catch (error) {
-      tasks.setTaskStatus(newTaskId, 'error');
+      tasks.setTaskStatus(newTaskId, (error as any).message);
     }
   });
 

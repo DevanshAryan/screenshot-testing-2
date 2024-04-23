@@ -1,3 +1,5 @@
+console.log(process.cwd());
+
 export const config = {
   pageShots: {
     pages: [

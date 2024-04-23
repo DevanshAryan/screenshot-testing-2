@@ -58,6 +58,14 @@ function getAllScenarioFiles(directoryPath: string): string[] {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const lostpixeldir=path.join(process.cwd(),'public', 'resources','.lostpixel');
+  if(!fs.existsSync(lostpixeldir))
+    {
+      fs.mkdirSync(path.join(process.cwd(),'public'))
+      fs.mkdirSync(path.join(process.cwd(),'public','resources'))
+      fs.mkdirSync(path.join(process.cwd(),'public','resources','.lostpixel'))
+
+    }
   const baselineDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','baseline');
   console.log('62');
   console.log(baselineDir);

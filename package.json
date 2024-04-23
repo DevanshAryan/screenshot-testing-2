@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "lint": "next lint",
     "postbuild":"cd .next && mkdir public && cd public && mkdir resources && cd resources && mkdir .lostpixel && cd .lostpixel && mkdir baseline && mkdir current && mkdir difference"
   },

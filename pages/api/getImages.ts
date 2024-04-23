@@ -60,6 +60,9 @@ function getAllScenarioFiles(directoryPath: string): string[] {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const baselineDir = path.join(process.cwd(), 'public', 'resources','.lostpixel','baseline');
   console.log('62');
+  console.log(baselineDir);
+  console.log(process.cwd());
+  console.log(__dirname);
   const baselineImageFiles = fs.readdirSync(baselineDir);
   const baselineFiles = baselineImageFiles.map((file: string) => {
     return file;

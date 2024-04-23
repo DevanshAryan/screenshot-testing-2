@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { spawnSync } from 'child_process';
+import { execSync } from 'child_process';
 import { v4 as uuidv4 } from 'uuid';
 
 import tasks from '@/src/tasks';
@@ -28,10 +28,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   process.nextTick(async () => {
     try {
       process.env.TARGET_URL = baseUrl;
-      spawnSync('npx',['lost-pixel','update']);
+      execSync('npx lost-pixel update');
 
       process.env.TARGET_URL = compareUrl;
-      spawnSync('npx',['lost-pixel']);
+      execSync('npx lost-pixel');
 
       tasks.setTaskStatus(newTaskId, 'completed');
     } catch (error) {

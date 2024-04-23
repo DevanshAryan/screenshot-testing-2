@@ -7,9 +7,6 @@ import tasks from '@/src/tasks';
 const exec = (command: string) =>
   new Promise((resolve,reject) => {
     execCallback(command, (err, stdout) => {
-      if(err)
-      return reject(err);
-    
       console.log(stdout);
       return resolve(stdout);
     });

@@ -8,7 +8,6 @@ const currentDirectory = '/tmp';
 console.log('Current working directory:', currentDirectory);
 
 // Read the contents of the current directory
-console.log('11');
 fs.readdir(currentDirectory, (err: any, files: any) => {
   if (err) {
     console.error('Error reading directory:', err);
@@ -58,13 +57,8 @@ function getAllScenarioFiles(directoryPath: string): string[] {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const lostpixeldir = path.join('/tmp', 'public', 'resources', '.lostpixel');
-  if (!fs.existsSync(lostpixeldir)) {
-    fs.mkdirSync(path.join('/tmp', 'public'));
-    fs.mkdirSync(path.join('/tmp', 'public', 'resources'));
-    fs.mkdirSync(path.join('/tmp', 'public', 'resources', '.lostpixel'));
-  }
-  const baselineDir = path.join('/tmp', 'public', 'resources', '.lostpixel', 'baseline');
+
+  const baselineDir = path.join('/tmp', 'baseline');
   console.log('62');
   console.log(baselineDir);
   console.log('/tmp');
@@ -74,14 +68,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return file;
   });
 
-  const currentDir = path.join('/tmp', 'public', 'resources', '.lostpixel', 'current');
+  const currentDir = path.join('/tmp', 'current');
   console.log(69);
   const currentImageFiles = fs.readdirSync(currentDir);
   const currentFiles = currentImageFiles.map((file: string) => {
     return file;
   });
 
-  const diffDir = path.join('/tmp', 'public', 'resources', '.lostpixel', 'difference');
+  const diffDir = path.join('/tmp', 'difference');
   console.log(76);
   const diffImageFiles = fs.readdirSync(diffDir);
   const diffFiles = diffImageFiles.map((file: string) => {
@@ -91,9 +85,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const images = baselineFiles.map((file: string) => {
     return {
       fileName: file,
-      baseImageSrc: `resources/.lostpixel/baseline/${file}`,
-      currentImageSrc: `resources/.lostpixel/baseline/${file}`,
-      diffImageSrc: diffFiles.includes(file) ? `resources/.lostpixel/difference/${file}` : undefined,
+      baseImageSrc: `/tmp/baseline/${file}`,
+      currentImageSrc: `/tmp/baseline/${file}`,
+      diffImageSrc: diffFiles.includes(file) ? `/tmp/difference/${file}` : undefined,
     };
   });
 

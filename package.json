@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postbuild": "cd /tmp && mkdir public && cd public && mkdir resources && cd resources && mkdir .lostpixel && cd .lostpixel && mkdir baseline && mkdir current && mkdir difference"
+    "lint": "next lint"
   },
   "dependencies": {
     "@sprinklrjs/spaceweb": "^12.33.2",

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "mkdir /tmp && cd /tmp && mkdir public && cd public && mkdir resources && cd resources && mkdir .lostpixel && cd .lostpixel && mkdir baseline && mkdir current && mkdir difference"
+    "postbuild": "cd /tmp && mkdir public && cd public && mkdir resources && cd resources && mkdir .lostpixel && cd .lostpixel && mkdir baseline && mkdir current && mkdir difference"
   },
   "dependencies": {
     "@sprinklrjs/spaceweb": "^12.33.2",

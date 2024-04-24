@@ -1,4 +1,3 @@
-// console.log('/tmp');
 
 export const config = {
   pageShots: {

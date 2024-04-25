@@ -1,0 +1,15 @@
+services:
+- type: web
+  name: app
+  env: Docker
+  buildCommand: yarn build
+  startCommand: yarn next start
+  envVars:
+  - key: LOST_PIXEL_DISABLE_TELEMETRY
+    value: '1'
+  workingDir: /app
+  dockerfilePath: ./Dockerfile
+  disk:
+    name: app
+    mountPath: /app
+    sizeGB: 10

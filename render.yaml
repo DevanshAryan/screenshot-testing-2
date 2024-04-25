@@ -7,7 +7,6 @@ services:
   envVars:
   - key: LOST_PIXEL_DISABLE_TELEMETRY
     value: '1'
-  workingDir: /app
   dockerfilePath: ./Dockerfile
   disk:
     name: app

@@ -2,7 +2,7 @@ services:
 - type: web
   name: app
   env: Docker
-  image: devansharyandtu/vrt:latest
+  buildCommand: yarn build
   startCommand: yarn next start
   envVars:
   - key: LOST_PIXEL_DISABLE_TELEMETRY
